@@ -12,7 +12,7 @@ With `SICS`, you can **automate the cleanup process** using custom **thresholds*
 ✅ **Filter by time range** (`START_TIME` and `END_TIME`)  
 ✅ **Configurable threshold** for identifying invalid data  
 ✅ **Works with InfluxDB 1.x (not tested on 2.x)**  
-✅ **Made for Home Assistant sensor data based on entity_id**  
+✅ **Made for Home Assistant sensor data based on entity_id tags**  
 
 ---
 
