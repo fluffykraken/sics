@@ -147,6 +147,7 @@ Mode:              delete
 ## ⚠️ Important Notice: Backup & Disclaimer
 Before running this script, **ensure you have a full backup of your InfluxDB database**.  
 **Data modifications (deletions or overwrites) are irreversible!** If something goes wrong, **your data may be permanently lost**.
+Always test on a non-production database first before using it on live data.
 
 ### 📌 Backup Recommendation
 Run the following command to create a backup before using this script:
