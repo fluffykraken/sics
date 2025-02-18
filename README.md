@@ -5,6 +5,25 @@ The **Simple InfluxDB Cleanup Script (SICS)** is a lightweight and efficient too
 It has been **specifically tested with Home Assistant sensor data**, where sensor spikes and incorrect readings can occur over time.  
 With `SICS`, you can **automate the cleanup process** using custom **thresholds** and **time filters**.
 
+## ⚠️ Important Notice: Backup & Disclaimer
+Before running this script, **ensure you have a full backup of your InfluxDB database**.  
+**Data modifications (deletions or overwrites) are irreversible!** If something goes wrong, **your data may be permanently lost**.
+
+### 📌 Backup Recommendation
+Run the following command to create a backup before using this script:
+```bash
+influxd backup -portable /path/to/backup
+```
+For more details, refer to the [InfluxDB Backup Documentation](https://docs.influxdata.com/influxdb/v1.8/administration/backup_and_restore/).
+
+---
+
+⚠️ **Use this script at your own risk!**  
+I take **no responsibility** for any **data loss, corruption, or unintended consequences** resulting from the use of this script.  
+By using this script, you **accept full responsibility** for any changes made to your InfluxDB database.  
+
+**❌ I am not liable for any damage** caused by running this script. Always test on a **non-production database first** before using it on live data.  
+
 ---
 
 ## 🛠 Features
