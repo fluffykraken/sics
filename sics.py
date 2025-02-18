@@ -1,3 +1,4 @@
+#2025.02.01
 import configparser
 from influxdb import InfluxDBClient
 import sys
@@ -140,20 +141,48 @@ if total_points == 0:
     client.close()
     sys.exit(0)
 
-# Display first 20 results
+
+# Determine the maximum width for the "Value" column dynamically
+max_value_length = max(len(f"{point['value']:.2f}") for point in points) if points else 10
+value_column_width = max(max_value_length, 10)  # Ensure a minimum width of 10 characters
+
+# Print a properly aligned table with first 10 and last 10 values in a **single table**
+def print_combined_table(data):
+    # Table header
+    print("┌───────────────────────────────┬" + "─" * (value_column_width + 2) + "┐")
+    print(f"│        Timestamp              │ {'Value'.center(value_column_width)} │")
+    print("├───────────────────────────────┼" + "─" * (value_column_width + 2) + "┤")
+
+    # Print first 10 values
+    for point in data[:10]:  # First 10 values
+        value_str = f"{point['value']:.2f}".rjust(value_column_width)
+        print(f"│ {point['time']}   │ {value_str} │")
+
+    # Print separator row if there are omitted entries
+    if len(data) > 20:
+        separator = f"│ {'......'.center(29)} │ {' '.ljust(value_column_width)} │"
+        #print("├───────────────────────────────┼" + "─" * (value_column_width + 2) + "┤")
+        print(separator)
+        #print("├───────────────────────────────┼" + "─" * (value_column_width + 2) + "┤")
+
+    # Print last 10 values
+    for point in data[-10:]:  # Last 10 values
+        value_str = f"{point['value']:.2f}".rjust(value_column_width)
+        print(f"│ {point['time']}   │ {value_str} │")
+
+    # Table footer
+    print("└───────────────────────────────┴" + "─" * (value_column_width + 2) + "┘")
+
+# Display found results
 print(f"\n🔍 Found {total_points} entries with value {COMPARE_MODE} {THRESHOLD}.\n")
-print("\n📋 First 20 found values:")
-print("┌────────────────────────────────────┬──────────────┐")
-print("│        Timestamp                   │     Value    │")
-print("├────────────────────────────────────┼──────────────┤")
 
-for point in points[:20]:
-    print(f"│ {point['time']}        │ {point['value']:>12} │")
-
-print("└────────────────────────────────────┴──────────────┘")
-
-if total_points > 20:
-    print(f"... and {total_points - 20} more entries.")
+if total_points == 1:
+    print_combined_table(points)  # Print single entry
+elif total_points <= 20:
+    print_combined_table(points)  # Print all values in a single table
+else:
+    print_combined_table(points)  # Print first 10 and last 10 with separator
+    print(f"\n... and {total_points - 20} more entries.")
 
 confirm_points = input(f"\n👉 Do you want to {'delete' if ACTION_MODE == 'delete' else 'overwrite'} these values? (Y/N): ").strip().lower()
 if confirm_points != 'y':
