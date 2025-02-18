@@ -158,7 +158,6 @@ For more details, refer to the [InfluxDB Backup Documentation](https://docs.infl
 ---
 
 ⚠️ **Use this script at your own risk!**  
-
 I take **no responsibility** for any **data loss, corruption, or unintended consequences** resulting from the use of this script.  
 By using this script, you **accept full responsibility** for any changes made to your InfluxDB database.  
 I am not liable for any damage caused by running this script.
