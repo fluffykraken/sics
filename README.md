@@ -37,8 +37,8 @@ Create a `config.ini` file in the same directory and define the database setting
 HOST = 192.168.1.100 # your influxDB host
 PORT = 8086 # influxDB port
 DATABASE = home_assistant  # Your Home Assistant InfluxDB database name
-DBUSER = admin
-DBPASSWORD = mysecurepassword
+DBUSER = "admin"  # InfluxDB username; set to None if authentication is not required
+DBPASSWORD = "mysecurepassword"  # InfluxDB password; set to None if authentication is not required
 
 [CLEANER]
 MEASUREMENT = W  # Example: Power measurement
