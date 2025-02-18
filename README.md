@@ -30,7 +30,8 @@ cd sics
 ```
 
 ### **3️⃣ Configure `config.ini`**
-Create a `config.ini` file in the same directory and define the database settings:
+Modify the `config.ini` file to match your setup and requirements.  
+⚠️ Do not include comments (e.g., `# this is a comment`) in the `config.ini` file, as they are not supported.
 
 ```ini
 [DATABASE]
