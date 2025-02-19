@@ -67,11 +67,11 @@ python sics.py
 The script will:
 1. **Connect to InfluxDB**
 2. **Find all matching values** based on the threshold & time range
-3. **Display the first 20 found entries**
+3. **Display the first and last 10 entries found for better visibility before data modification or deletion.**
 4. **Prompt for confirmation before deleting/overwriting**
 5. **Process data with a smooth progress bar**
 
-### **📝 Example Output**
+### ** Example Output**
 ```
 ================================================
 Welcome to the InfluxDB Cleanup Script!
