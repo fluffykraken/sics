@@ -141,7 +141,6 @@ if total_points == 0:
     client.close()
     sys.exit(0)
 
-
 # Determine the maximum width for the "Value" column dynamically
 max_value_length = max(len(f"{point['value']:.2f}") for point in points) if points else 10
 value_column_width = max(max_value_length, 10)  # Ensure a minimum width of 10 characters
