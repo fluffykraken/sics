@@ -116,7 +116,7 @@ Mode:              delete
 🔹 **Only tested with Home Assistant sensor data.**  
 🔹 **Not tested with other InfluxDB datasets.**  
 🔹 **Designed for InfluxDB 1.x (may not work with 2.x).**  
-🔹 **Using overwrite mode, writes only entity_id and value at the moment, all other tags e.g. "friendly_name", "device_class", etc. will be gone**
+🔹 **Using overwrite mode, writes only entity_id and value at the moment, all other tags and fields e.g. "domain, "friendly_name", "device_class", etc. will be gone**
 
 
 ---
